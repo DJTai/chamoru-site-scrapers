@@ -132,3 +132,6 @@ dmypy.json
 *.bak
 *.dat
 *.dir
+
+# VS Code
+*.vscode
