@@ -1,4 +1,3 @@
-import csv
 import logging
 import progressbar
 import requests
@@ -7,6 +6,7 @@ import shelve
 from bs4 import BeautifulSoup as bs
 from chamoru_data import ChamoruWord
 from requests.exceptions import HTTPError
+
 
 def get_single_page(page_url):
     """Makes a request and returns the HTML text.
@@ -34,6 +34,7 @@ def get_single_page(page_url):
 
     return html_text
 
+
 def create_dictionary(shelf_file, url, start, stop):
     """Creates a Dict of ChamoruWord objects.
 
@@ -42,7 +43,7 @@ def create_dictionary(shelf_file, url, start, stop):
         url (str): URL being accessed.
         start (int): 1st ID to access.
         stop (int): Last ID to access.
-        
+
     Returns:
         Nothing, but the dictionary is stored in the shelf file supplied.
     """
@@ -69,7 +70,7 @@ def create_dictionary(shelf_file, url, start, stop):
                 ch_word.definition = trs[2].text.split('\n')[2]
                 ch_word.pronunciation = trs[1].text.split('\n')[2]
                 ch_word.origin = trs[3].text.split('\n')[2]
-                
+
                 # Chamoru & English example
                 exs = trs[4].text.split('\n')
                 if exs[2] != '' and exs[2] != ' ':
@@ -84,6 +85,7 @@ def create_dictionary(shelf_file, url, start, stop):
     ch_shelf = shelve.open(shelf_file)
     ch_shelf['dictionary'] = ch_dict
     ch_shelf.close()
+
 
 def main():
     """Main function"""
@@ -102,6 +104,7 @@ def main():
     id_end = 10211  # Last accessible ID on site
 
     create_dictionary(shelf_file, definition_url, id_beg, id_end)
+
 
 if __name__ == "__main__":
     main()
