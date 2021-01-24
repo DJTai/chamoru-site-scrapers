@@ -212,7 +212,7 @@ def get_single_page(page_url):
 
 def search_pdn_for(term, type):
     """Searches the term on Guam PDN and returns the result as a BeautifulSoup object.
-    
+
     Args:
         term (str): Search term.
         type (int): -1 for infinite-scrolling, 1 for no-scrolling, 2 for pagination.

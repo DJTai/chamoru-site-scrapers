@@ -11,7 +11,7 @@ class ChamoruWord:
         en_example (str): English translation of ch_example.
         root_word (str): Root word, if applicable.
     """
-    
+
     def __init__(self, word):
         """Constructor.
 
@@ -33,4 +33,10 @@ class ChamoruWord:
         Returns:
             str: Word, Type, and Definition
         """
-        return "Word: {}\nDef: {}\nCH: {}\nEX: {}".format(self.word, self.definition, self.ch_example, self.en_example)
+
+        formatted = "Word: {}\n".format(self.word)
+        formatted += "Def: {}\n".format(self.definition)
+        formatted += "CH: {}\n".format(self.ch_example)
+        formatted += "EN: {}\n".format(self.en_example)
+
+        return formatted

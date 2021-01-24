@@ -2,6 +2,7 @@ import shelve
 
 from chamoru_data import ChamoruWord
 
+
 def get_chamoru_dict():
     """Retrieves the dictionary stored in the shelf object.
 
@@ -14,9 +15,10 @@ def get_chamoru_dict():
 
     return ch_dict
 
+
 def main():
     """Main function"""
-    
+
     chamoru_dict = get_chamoru_dict()
     done = False
 
