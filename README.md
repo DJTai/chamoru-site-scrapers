@@ -6,6 +6,7 @@ Web scrapers for Chamoru-related websites.
 
 These are the sites that are currently scrapable using this code:
 
+- [Ancient Chamorro Society](https://ancientchamorrosociety.weebly.com/)
 - [Chamoru.info](http://www.chamoru.info/)
 - [Guam PDN](https://www.guampdn.com/)
 
