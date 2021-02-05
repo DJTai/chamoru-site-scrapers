@@ -22,10 +22,10 @@ def create_json_from_list(filename, my_list):
         my_list (list): List containing the data.
     """
 
-    if my_list == None:
+    if my_list is None:
         logging.warning("{} is None".format(my_list))
         return None
-    if isinstance(my_list, list) == False:
+    if isinstance(my_list, list) is False:
         logging.warning("{} isn't a list".format(my_list))
         return None
 
@@ -71,13 +71,16 @@ def get_ch_and_en(urls):
 
         # Check if the article is CH-EN
         ch_title = new_soup.find('title').text
-        if new_soup.find('h2') != None:  # English title style 1
+        if new_soup.find('h2') is not None:  # English title style 1
             en_title = new_soup.find('h2').text
-            if "English" in en_title and new_soup.find('h3', {'class': 'presto-h3'}) != None:  # English title style 2
+            h3 = new_soup.find('h3', {'class': 'presto-h3'})
+
+            if "English" in en_title and h3 is not None:  # English title style 2
                 en_title = new_soup.find('h3', {'class': 'presto-h3'}).text
         else:
             # Don't add article
-            continue
+            texts = new_soup.find_all('p', {'class': 'gnt_ar_b_p'})
+            en_title = texts[len(texts) // 2].text
 
         # Dates are 4:7 or 3:6
         date = '-'.join(url.split('/')[4:7])
